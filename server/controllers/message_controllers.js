@@ -26,9 +26,9 @@ module.exports = {
         res.status(200).send(messages);
     },
     delete: (req, res) => {
-        const deleteID = req.params.id;    
+        const deleteID = req.params;    
         messageIndex = messages.findIndex(message => message.id == deleteID);
         messages.splice(messageIndex, 1);
         res.status(200).send(messages);
-      }
+      },
 }
