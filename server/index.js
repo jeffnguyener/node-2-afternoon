@@ -1,11 +1,17 @@
-const express = require('express');
+const express = require("express");
+const mc = require('./controllers/message_controllers');
 
 const app = express();
 
+app.use(express.json());
 
+const messagesBaseUrl = "/api/messages";
+app.post(messagesBaseUrl, mc.create);
+app.get(messagesBaseUrl, mc.read);
+app.put(messagesBaseUrl, mc.update);
+app.delete(messagesBaseUrl, mc.delete);
 
-
-
-app.listen(3001, () => {
-    console.log('Listening on port 3001')
+const port = 3001;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
